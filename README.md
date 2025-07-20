@@ -23,3 +23,12 @@ Personal project for deploying a secure remote-access instance of Home Assistant
 ## 👨‍💻 Author
 **Pablo Varela Mille**  
 [LinkedIn Profile](https://www.linkedin.com/in/pvpeuve)
+
+## ⚠️ Important Note
+
+This repository excludes private credentials, secrets and SSL certificates for security reasons.
+
+If you want to replicate this project:
+- Replace `secrets.yaml` with your own version
+- Obtain your own DuckDNS token and configure `duckdns.conf`
+- Set up Let's Encrypt manually following the official documentation
