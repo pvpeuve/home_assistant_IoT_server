@@ -18,11 +18,6 @@ Personal project for deploying a secure remote-access instance of Home Assistant
 - Fully local and self-hosted deployment  
 
 ## 📷 Screenshots
-*(Add screenshots here if available)*
-
-## 👨‍💻 Author
-**Pablo Varela Mille**  
-[LinkedIn Profile](https://www.linkedin.com/in/pvpeuve)
 
 ## ⚠️ Important Note
 
