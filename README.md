@@ -25,6 +25,11 @@ If you want to replicate this project:
 - Containerized service isolation using Docker Compose  
 - Fully local and self-hosted deployment  
 
+## 📷 Screenshots
+
+![Home Assistant Welcome Interface](images/ha_welcocme)  
+![Home Assistant Dashboard Interface](images/ha_dashboard)  
+
 ## ❔ Setup Guide
 This guide describes the step-by-step process to deploy Home Assistant for remote access using Docker containers, NGINX as a reverse proxy, and Let's Encrypt SSL certificates via DuckDNS.
 
