@@ -3,7 +3,6 @@
 Personal project for deploying a secure remote-access instance of Home Assistant using Docker containers, reverse proxy (NGINX), and dynamic DNS via DuckDNS.
 
 ## ⚠️ Important Note
-
 This repository excludes private credentials, secrets and SSL certificates for security reasons.
 
 If you want to replicate this project:
@@ -29,7 +28,6 @@ If you want to replicate this project:
 
 
 ## ❔ Setup Guide
-
 This guide describes the step-by-step process to deploy Home Assistant for remote access using Docker containers, NGINX as a reverse proxy, and Let's Encrypt SSL certificates via DuckDNS.
 
 ### Step 1: Initial Folder Structure (*/*)
@@ -116,7 +114,7 @@ docker-compose up --build -d
 ### Step 5: Obtain SSL Certificates
 
 ```powershell
-docker exec letsencrypt certbot certonly --webroot -w /var/www/certbot -d {subdomain}.duckdns.org --email {email} --agree-tos --non-interactive
+docker exec certbot certbot certonly --webroot -w /var/www/certbot -d {subdomain}.duckdns.org --email {email} --agree-tos --non-interactive
 ```
 
 ### Step 6: Stop Everything
@@ -179,12 +177,11 @@ http:
 ```
 
 ## 👨‍💻 Author
-
-**Pablo Varela Mille (pvpeuve)**
+**Pablo Varela Mille (pvpeuve)**  
 IoT Technician & Junior Python Developer focused on smart automation, edge computing and secure home infrastructure.  
 🔗 [LinkedIn](https://www.linkedin.com/in/pvpeuve)  
 💻 [GitHub](https://github.com/pvpeuve)  
-📧 [Mail](userandroidsp@gmail.com) 
-📱 [Mobile](+346026046086)
+📧 [Mail](userandroidsp@gmail.com)  
+📱 [Mobile](+346026046086)  
 
 *Feel free to fork this project or reach out for collaboration ideas.*
