@@ -179,9 +179,10 @@ http:
 ## 👨‍💻 Author
 **Pablo Varela Mille (pvpeuve)**  
 IoT Technician & Junior Python Developer focused on smart automation, edge computing and secure home infrastructure.  
+
 🔗 [LinkedIn](https://www.linkedin.com/in/pvpeuve)  
 💻 [GitHub](https://github.com/pvpeuve)  
 📧 [Mail](userandroidsp@gmail.com)  
-📱 [Mobile](+346026046086)  
+📞 [Whatsapp](+346026046086)  
 
 *Feel free to fork this project or reach out for collaboration ideas.*
