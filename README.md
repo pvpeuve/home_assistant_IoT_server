@@ -27,3 +27,14 @@ If you want to replicate this project:
 - Replace `secrets.yaml` with your own version
 - Obtain your own DuckDNS token and configure `duckdns.conf`
 - Set up Let's Encrypt manually following the official documentation
+## ❔ Remote Home Assistant Setup with Docker, NGINX and DuckDNS
+
+This guide describes the step-by-step process to deploy Home Assistant for remote access using Docker containers, NGINX as a reverse proxy, and Let's Encrypt SSL certificates via DuckDNS.
+
+## 📁 Step 1: Initial Folder Structure
+
+In your terminal (PowerShell or Bash):
+
+```bash
+mkdir certbot certbot/www certbot/conf nginx nginx/conf.d
+
