@@ -12,12 +12,11 @@ If you want to replicate this project:
 - Set up Let's Encrypt manually following the official documentation
 
 ## 🔧 Technologies Used
-- Docker + Docker Compose  
+- Docker (Container service) 
 - NGINX (reverse proxy)  
 - Let's Encrypt (SSL certificates)  
 - DuckDNS (dynamic DNS service)  
-- Home Assistant  
-- YAML configuration  
+- Home Assistant (main app)
 
 ## 🚀 Features
 - Remote access to Home Assistant over HTTPS  
@@ -49,7 +48,7 @@ services:
     volumes:
       - ./homeassistant:/config
     networks:
-      - {**network**}
+      - {network}
     restart: unless-stopped
 
   nginx:
@@ -64,16 +63,16 @@ services:
     depends_on:
       - homeassistant
     networks:
-      - {**network**}
+      - {network}
     restart: unless-stopped
 
   duckdns:
     image: linuxserver/duckdns
     environment:
-      - SUBDOMAINS={**subdomain**}
-      - TOKEN={**token**}
+      - SUBDOMAINS={subdomain}
+      - TOKEN={token}
     networks:
-      - {**network**}
+      - {**network}
     restart: unless-stopped
 
   certbot:
@@ -83,11 +82,11 @@ services:
       - ./certbot/conf:/etc/letsencrypt
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
     networks:
-      - {**network**}
+      - {network}
     restart: unless-stopped
 
 networks:
-  {**network**}:
+  {network}:
     driver: bridge
 ```
 
@@ -96,7 +95,7 @@ networks:
 ```nginx
 server {
     listen 80;
-    server_name {**subdomain**}.duckdns.org;
+    server_name {subdomain}.duckdns.org;
     
     location /.well-known/acme-challenge/ {
         root /var/www/certbot;
@@ -117,7 +116,7 @@ docker-compose up --build -d
 ### Step 5: Obtain SSL Certificates
 
 ```powershell
-docker exec letsencrypt certbot certonly --webroot -w /var/www/certbot -d {**subdomain**}.duckdns.org --email {**email**} --agree-tos --non-interactive
+docker exec letsencrypt certbot certonly --webroot -w /var/www/certbot -d {subdomain}.duckdns.org --email {email} --agree-tos --non-interactive
 ```
 
 ### Step 6: Stop Everything
@@ -131,7 +130,7 @@ docker-compose down
 ```nginx
 server {
     listen 80;
-    server_name {**subdomain**}.duckdns.org;
+    server_name {subdomain}.duckdns.org;
 
     location /.well-known/acme-challenge/ {
         root /var/www/certbot;
@@ -144,10 +143,10 @@ server {
 
 server {
     listen 443 ssl;
-    server_name {**subdomain**}.duckdns.org;
+    server_name {subdomain}.duckdns.org;
 
-    ssl_certificate /etc/letsencrypt/live/{**subdomain**}.duckdns.org/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/{**subdomain**}.duckdns.org/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/{subdomain}.duckdns.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{subdomain}.duckdns.org/privkey.pem;
 
     location / {
         proxy_pass http://homeassistant:8123;
@@ -158,4 +157,34 @@ server {
     }
 }
 ```
-### Step 7: Home Assistant Configuration (*homeassistant/configuration.yaml*)
+
+### Step 8: Home Assistant Configuration (*homeassistant/configuration.yaml*)
+
+```yaml
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.18.0.5
+```
+
+## 👨‍💻 Author
+
+**Pablo Varela Mille (pvpeuve)**
+IoT Technician & Junior Python Developer focused on smart automation, edge computing and secure home infrastructure.  
+🔗 [LinkedIn](https://www.linkedin.com/in/pvpeuve)  
+💻 [GitHub](https://github.com/pvpeuve)  
+📧 [Mail](userandroidsp@gmail.com) 
+📱 [Mobile](+346026046086)
+
+*Feel free to fork this project or reach out for collaboration ideas.*
