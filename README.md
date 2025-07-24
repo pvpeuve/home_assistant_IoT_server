@@ -8,7 +8,6 @@ Personal project for deploying a secure remote-access instance of Home Assistant
 - [Features](#-features)
 - [Screenshots](#-screenshots)
 - [Setup Guide](#-setup-guide)
-- [Troubleshooting](#-troubleshooting)
 - [Author](#-author)
 
 ## ⚠️ Important Note
