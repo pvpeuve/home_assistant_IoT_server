@@ -27,8 +27,8 @@ If you want to replicate this project:
 
 ## 📷 Screenshots
 
-![Home Assistant Welcome Interface](images/ha_welcocme)  
-![Home Assistant Dashboard Interface](images/ha_dashboard)  
+![Home Assistant Welcome Interface](images/ha_welcocme.png)  
+![Home Assistant Dashboard Interface](images/ha_dashboard.png)  
 
 ## ❔ Setup Guide
 This guide describes the step-by-step process to deploy Home Assistant for remote access using Docker containers, NGINX as a reverse proxy, and Let's Encrypt SSL certificates via DuckDNS.
