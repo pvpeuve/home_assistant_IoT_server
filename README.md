@@ -70,7 +70,7 @@ services:
       - SUBDOMAINS={subdomain}
       - TOKEN={token}
     networks:
-      - {**network}
+      - {network}
     restart: unless-stopped
 
   certbot:
@@ -152,6 +152,17 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /api/websocket {
+        proxy_pass http://homeassistant:8123/api/websocket;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_read_timeout 86400;
     }
 }
 ```
