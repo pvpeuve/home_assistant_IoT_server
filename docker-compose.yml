@@ -1,0 +1,50 @@
+services:
+  homeassistant:
+    image: homeassistant/home-assistant:stable
+    container_name: homeassistant
+    volumes:
+      - ./homeassistant:/config
+    networks:
+      - {network}
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./certbot/www:/var/www/certbot
+      - ./certbot/conf:/etc/letsencrypt
+    depends_on:
+      - homeassistant
+    networks:
+      - {network}
+    restart: unless-stopped
+
+  duckdns:
+    image: linuxserver/duckdns
+    container_name: duckdns
+    environment:
+      - SUBDOMAINS={subdomain}
+      - TOKEN={token}
+    networks:
+      - {network}
+    restart: unless-stopped
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./certbot/www:/var/www/certbot
+      - ./certbot/conf:/etc/letsencrypt
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    networks:
+      - {network}
+    restart: unless-stopped
+
+networks:
+  {network}:
+    driver: bridge
