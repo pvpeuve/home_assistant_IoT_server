@@ -28,7 +28,7 @@ If you want to replicate this project:
 ## 📷 Screenshots
 
 ### Welcome Page
-![Home Assistant Welcome Interface](images/welcome.png)  
+![Home Assistant Welcome Interface](images/ha_welcome.png)  
 ### Dashboard Page
 ![Home Assistant Dashboard Interface](images/ha_dashboard.png)  
 
