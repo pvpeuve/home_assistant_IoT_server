@@ -14,7 +14,6 @@ Personal project for deploying a secure remote-access instance of Home Assistant
 This repository excludes private credentials, secrets and SSL certificates for security reasons.
 
 If you want to replicate this project:
-- Replace the default `secrets.yaml` with your own version containing secure credentials
 - Obtain your DuckDNS token and subdomain signing up at [DuckDNS](https://www.duckdns.org/)
 - Open ports `80` and `443` on your router and point them to your host machine
 - Create an inbound rule in your system firewall to allow HTTP and HTTPS traffic
