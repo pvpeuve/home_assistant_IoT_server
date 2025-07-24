@@ -2,6 +2,15 @@
 
 Personal project for deploying a secure remote-access instance of Home Assistant using Docker containers, reverse proxy (NGINX), and dynamic DNS via DuckDNS.
 
+## Table of Contents
+- [Important Note](#-important-note)
+- [Technologies Used](#-technologies-used)
+- [Features](#-features)
+- [Screenshots](#-screenshots)
+- [Setup Guide](#-setup-guide)
+- [Troubleshooting](#-troubleshooting)
+- [Author](#-author)
+
 ## ⚠️ Important Note
 This repository excludes private credentials, secrets and SSL certificates for security reasons.
 
